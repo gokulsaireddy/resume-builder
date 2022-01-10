@@ -2,12 +2,10 @@ module ApplicationHelper
 
     # Returns the Gravatar URL for the given user.
     def gravatar_url_for(user)
-        if user
-            gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-            gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
-            return gravatar_url
+        if user.avatar.attached?
+            return user.avatar
         end
-        image_path("default_user.png")
+        image_path("download.png")
     end
 
 end

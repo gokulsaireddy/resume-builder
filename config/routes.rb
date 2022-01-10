@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'experiences/new'
   root   'home#index'   # root is          get '/'
   get    'edit'    => 'home#edit'
 
