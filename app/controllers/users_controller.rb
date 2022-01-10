@@ -5,9 +5,12 @@ class UsersController < ApplicationController
 
     if request.method == "POST"
       @user = User.new(user_params)
-      @user.build_profile()
+      p user_params
       p @user
       if @user.save
+        @profile= @user.build_profile()
+        @profile.save
+        session[:user_id] = @user.id
         redirect_to root_path
       else
         p 'Invalid data'
